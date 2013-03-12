@@ -12,4 +12,3 @@ suites:
 - name: default
   run_list: 
     - recipe[bprobe]
-  attributes: {}

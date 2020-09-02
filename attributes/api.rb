@@ -1,9 +1,9 @@
 #
 # Author:: Joe Williams (<j@boundary.com>)
-# Cookbook Name:: bprobe
+# Cookbook:: bprobe
 # Attributes:: api
 #
-# Copyright 2011, Boundary
+# Copyright:: 2011, Boundary
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,10 +18,10 @@
 # limitations under the License.
 #
 
-default[:boundary][:api][:hostname] = "api.boundary.com"
+default[:boundary][:api][:hostname] = 'api.boundary.com'
 
 # this is your organization id
-default[:boundary][:api][:org_id] = "yourid"
+default[:boundary][:api][:org_id] = 'yourid'
 
 # this is your api key (not the install token)
-default[:boundary][:api][:key] = "yourkey"
+default[:boundary][:api][:key] = 'yourkey'

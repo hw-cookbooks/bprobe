@@ -1,9 +1,9 @@
 #
 # Author:: Joe Williams (<j@boundary.com>)
-# Cookbook Name:: bprobe
+# Cookbook:: bprobe
 # Provider:: default
 #
-# Copyright 2011, Boundary
+# Copyright:: 2011, Boundary
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@
 include Boundary::API
 
 action :create do
-  if node[:boundary][:bprobe][:id]
-    Chef::Log.debug("Boundary meter already exists, not creating.")
+  if node['boundary']['bprobe']['id']
+    Chef::Log.debug('Boundary meter already exists, not creating.')
   else
     create_meter_request(new_resource)
     save_meter_id_attribute(new_resource)

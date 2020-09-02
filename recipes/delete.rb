@@ -1,9 +1,9 @@
 #
 # Author:: Joe Williams (<j@boundary.com>)
-# Cookbook Name:: bprobe
+# Cookbook:: bprobe
 # Recipe:: delete
 #
-# Copyright 2011, Boundary
+# Copyright:: 2011, Boundary
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,19 +19,19 @@
 #
 
 # delete the cert and key files on disk
-bprobe_certificates node[:fqdn] do
+bprobe_certificates node['fqdn'] do
   action :delete
 end
 
 # delete the meter from the boundary api
-bprobe node[:fqdn] do
+bprobe node['fqdn'] do
   action :delete
 end
 
-service "bprobe" do
+service 'bprobe' do
   action [ :stop, :disable ]
 end
 
-package "bprobe" do
+package 'bprobe' do
   action :remove
 end

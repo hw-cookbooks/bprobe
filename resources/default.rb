@@ -1,9 +1,9 @@
 #
 # Author:: Joe Williams (<j@boundary.com>)
-# Cookbook Name:: bprobe
+# Cookbook:: bprobe
 # Resource:: default
 #
-# Copyright 2011, Boundary
+# Copyright:: 2011, Boundary
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,9 +20,6 @@
 
 actions :create, :delete
 
-def initialize(*args)
-  super
-  @action = :create
-end
+default_action :create
 
-attribute :name, :kind_of => String, :name_attribute => true, :required => true
+attribute :name, kind_of: String, name_attribute: true, required: true

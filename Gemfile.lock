@@ -60,7 +60,7 @@ GEM
     hashie (2.0.2)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
-    json (1.7.7)
+    json (2.3.1)
     kitchen-lxc (0.0.1.beta1)
       test-kitchen (>= 1.0.0.alpha.0)
     method_source (0.8.1)

@@ -1,10 +1,10 @@
 #
 # Author:: Ben Black (<b@boundary.com>)
 # Author:: Joe Williams (<j@boundary.com>)
-# Cookbook Name:: bprobe
+# Cookbook:: bprobe
 # Recipe:: default
 #
-# Copyright 2010, Boundary
+# Copyright:: 2010, Boundary
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,55 +19,55 @@
 # limitations under the License.
 #
 
-include_recipe "bprobe::dependencies"
+include_recipe 'bprobe::dependencies'
 
 # create the meter in the boundary api
-bprobe node[:fqdn] do
+bprobe node['fqdn'] do
   action :create
 end
 
 # setup the config directory
-directory node[:boundary][:bprobe][:etc][:path] do
+directory node['boundary']['bprobe']['etc']['path'] do
   action :create
-  mode 0755
-  owner "root"
-  group "root"
+  mode '755'
+  owner 'root'
+  group 'root'
   recursive true
 end
 
 # download and install the meter cert and key files
-bprobe_certificates node[:fqdn] do
+bprobe_certificates node['fqdn'] do
   action :install
 end
 
 # install the bprobe package
 
-package "bprobe"
+package 'bprobe'
 
 # start the bprobe service
-service "bprobe" do
+service 'bprobe' do
   supports value_for_platform(
-    "debian" => { "4.0" => [ :restart ], "default" => [ :restart ] },
-    "ubuntu" => { "default" => [ :restart ] },
-    "default" => { "default" => [:restart ] }
+    'debian' => { '4.0' => [ :restart ], 'default' => [ :restart ] },
+    'ubuntu' => { 'default' => [ :restart ] },
+    'default' => { 'default' => [:restart ] }
   )
   action [ :start, :enable ]
 end
 
 # enforce the ca cert
-cookbook_file "#{node[:boundary][:bprobe][:etc][:path]}/ca.pem" do
-  source "ca.pem"
-  mode 0600
-  owner "root"
-  group "root"
-  notifies :restart, resources(:service => "bprobe")
+cookbook_file "#{node['boundary']['bprobe']['etc']['path']}/ca.pem" do
+  source 'ca.pem'
+  mode '600'
+  owner 'root'
+  group 'root'
+  notifies :restart, 'service[bprobe]'
 end
 
 # enforce the main config file
-template "#{node[:boundary][:bprobe][:etc][:path]}/bprobe.defaults" do
-  source "bprobe.defaults.erb"
-  mode 0644
-  owner "root"
-  group "root"
-  notifies :restart, resources(:service => "bprobe")
+template "#{node['boundary']['bprobe']['etc']['path']}/bprobe.defaults" do
+  source 'bprobe.defaults.erb'
+  mode '644'
+  owner 'root'
+  group 'root'
+  notifies :restart, 'service[bprobe]'
 end

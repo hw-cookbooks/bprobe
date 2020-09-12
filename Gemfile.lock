@@ -54,7 +54,7 @@ GEM
     coderay (1.0.9)
     concurrent-ruby (1.1.7)
     erubis (2.7.0)
-    facter (1.6.17)
+    facter (2.5.7)
     faraday (0.8.6)
       multipart-post (~> 1.1)
     hashie (2.0.2)

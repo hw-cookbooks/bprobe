@@ -55,7 +55,7 @@ def download_certificate_request(new_resource)
     begin
       auth = auth_encode()
       base_url = build_url(new_resource, :certificates)
-      headers = { 'Authorization' => "Basic #{auth}"}
+      headers = { 'Authorization' => "Basic #{auth}" }
 
       cert_response = http_request(:get, "#{base_url}/cert.pem", headers)
 
@@ -83,7 +83,7 @@ def download_key_request(new_resource)
     begin
       auth = auth_encode()
       base_url = build_url(new_resource, :certificates)
-      headers = {'Authorization' => "Basic #{auth}"}
+      headers = { 'Authorization' => "Basic #{auth}"}
 
       key_response = http_request(:get, "#{base_url}/key.pem", headers)
 

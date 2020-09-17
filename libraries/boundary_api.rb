@@ -187,11 +187,7 @@ module Boundary
       if response
         body = JSON.parse(response.body)
         if body[0]
-          if body[0]['id']
-            body[0]['id']
-          else
-            raise('Could not get meter id (nil response)!')
-          end
+          body[0]['id'] || raise('Could not get meter id (nil response)!')
         else
           raise('Could not get meter id (nil response)!')
         end

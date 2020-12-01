@@ -44,7 +44,7 @@ when 'redhat', 'centos', 'amazon'
     name 'boundary'
     baseurl "https://yum.boundary.com/centos/os/#{rhel_platform_version}/#{machine}/"
     key 'RPM-GPG-KEY-boundary'
-    action :add
+    action :create
   end
 
 when 'ubuntu'
